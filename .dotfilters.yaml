@@ -1,0 +1,9 @@
+!Filter
+name: gnupg
+rules:
+- !Secret
+  key: defaultkey
+  description: Default GnuPG key
+  numbered: false
+  regex: default-key(\s*)\w+
+  substitute: default-key\1(?#Key)
