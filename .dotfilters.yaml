@@ -70,3 +70,24 @@ rules:
   numbered: false
   regex: nick(\s*)=(\s*)(?#QuotedString);
   substitute: nick\1=\2"(?#Key)";
+--- !Filter
+name: caff
+rules:
+- !Secret
+  key: owner
+  description: Real name on IRC
+  numbered: false
+  regex: \$CONFIG\{'owner'\}(\s*)=(\s*)(?#QuotedString);
+  substitute: $CONFIG{'owner'}\1=\2'(?#Key)';
+- !Secret
+  key: email
+  description: User name on IRC
+  numbered: false
+  regex: \$CONFIG\{'email'\}(\s*)=(\s*)(?#QuotedString);
+  substitute: $CONFIG{'email'}\1=\2'(?#Key)';
+- !Secret
+  key: keyid
+  description: GPG key id
+  numbered: false
+  regex: \$CONFIG\{'keyid'\}(\s*)=(.*qw\{)\w+(\})
+  substitute: $CONFIG{'keyid'}\1=\2(?#Key)\3
