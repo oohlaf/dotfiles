@@ -1,4 +1,4 @@
-\$CONFIG{'owner'} = '$DotSecrets: owner$';
-\$CONFIG{'email'} = '$DotSecrets: email$';
-\$CONFIG{'keyid'} = [ qw{$DotSecrets: keyid$} ];
+$CONFIG{'owner'} = '$DotSecrets: owner$';
+$CONFIG{'email'} = '$DotSecrets: email$';
+$CONFIG{'keyid'} = [ qw{$DotSecrets: keyid$} ];
 $CONFIG{'gpg-sign-args'} = 'save';
