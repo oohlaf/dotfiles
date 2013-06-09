@@ -1,1 +1,4 @@
 gnupg/.gnupg/gpg.conf	filter=gnupg
+irssi/.irssi/keepnick	filter=keepnick
+irssi/.irssi/nickserv.auth	filter=nickserv
+irssi/.irssi/config	filter=irssi

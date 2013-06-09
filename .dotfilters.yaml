@@ -5,5 +5,68 @@ rules:
   key: defaultkey
   description: Default GnuPG key
   numbered: false
-  regex: default-key(\s*)\w+
+  regex: default-key(\s+)\w+
   substitute: default-key\1(?#Key)
+--- !Filter
+name: keepnick
+rules:
+- !Secret
+  key: freenode-nick
+  description: Nickname on Freenode
+  numbered: false
+  regex: freenode(\s+)\w+
+  substitute: freenode\1(?#Key)
+- !Secret
+  key: oftc-nick
+  description: Nickname on OFTC
+  numbered: false
+  regex: oftc(\s+)\w+
+  substitute: oftc\1(?#Key)
+--- !Filter
+name: nickserv
+rules:
+- !Secret
+  key: freenode-nick
+  description: Nickname on Freenode
+  numbered: false
+  regex: Freenode(\s+)\w+
+  substitute: Freenode\1(?#Key)
+- !Secret
+  key: freenode-pass
+  description: Password on Freenode
+  numbered: false
+  regex: Freenode(.*)(\s+)\w+$
+  substitute: Freenode\1\2(?#Key)
+- !Secret
+  key: oftc-nick
+  description: Nickname on OFTC
+  numbered: false
+  regex: OFTC(\s+)\w+
+  substitute: OFTC\1(?#Key)
+- !Secret
+  key: oftc-pass
+  description: Password on OFTC
+  numbered: false
+  regex: OFTC(.*)(\s+)\w+$
+  substitute: OFTC\1\2(?#Key)
+--- !Filter
+name: irssi
+rules:
+- !Secret
+  key: realname
+  description: Real name on IRC
+  numbered: false
+  regex: real_name(\s*)=(\s*)(?#QuotedString);
+  substitute: real_name\1=\2"(?#Key)";
+- !Secret
+  key: username
+  description: User name on IRC
+  numbered: false
+  regex: user_name(\s*)=(\s*)(?#QuotedString);
+  substitute: user_name\1=\2"(?#Key)";
+- !Secret
+  key: nick
+  description: Nick name on IRC
+  numbered: false
+  regex: nick(\s*)=(\s*)(?#QuotedString);
+  substitute: nick\1=\2"(?#Key)";
