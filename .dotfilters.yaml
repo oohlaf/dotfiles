@@ -75,13 +75,13 @@ name: caff
 rules:
 - !Secret
   key: owner
-  description: Real name on IRC
+  description: Name of GPG key owner
   numbered: false
   regex: \$CONFIG\{'owner'\}(\s*)=(\s*)(?#QuotedString);
   substitute: $CONFIG{'owner'}\1=\2'(?#Key)';
 - !Secret
   key: email
-  description: User name on IRC
+  description: Email address of GPG key owner
   numbered: false
   regex: \$CONFIG\{'email'\}(\s*)=(\s*)(?#QuotedString);
   substitute: $CONFIG{'email'}\1=\2'(?#Key)';
