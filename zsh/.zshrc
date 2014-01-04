@@ -37,6 +37,11 @@ alias mkdir='nocorrect mkdir'
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(history-substring-search screen ssh-agent gpg-agent git mercurial)
 
+# History substring search keybindings
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
 # Enable ssh forwarding and add github identity
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 zstyle :omz:plugins:ssh-agent identities id_rsa id_rsa.github
