@@ -148,6 +148,13 @@ if has("autocmd")
     autocmd FileType sql set smarttab
     autocmd FileType sql set expandtab
     autocmd FileType sql set autoindent
+
+    " Lisp
+    autocmd FileType lisp set softtabstop=2
+    autocmd FileType lisp set shiftwidth=2
+    autocmd FileType lisp set expandtab
+    autocmd FileType lisp set smarttab
+    autocmd FileType lisp set autoindent
     
     " Handlebars
     autocmd FileType handlebars set textwidth=0
