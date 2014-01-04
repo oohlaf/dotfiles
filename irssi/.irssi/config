@@ -332,6 +332,15 @@ ignores = (
   {
     level = "JOINS PARTS QUITS MODES";
     channels = ( "#debian-mentors" );
+  },
+  { level = "JOINS PARTS QUITS MODES"; channels = ( "#python" ); },
+  { level = "JOINS PARTS QUITS MODES"; channels = ( "#zodb" ); },
+  { level = "JOINS PARTS QUITS MODES"; channels = ( "#zope" ); },
+  { level = "JOINS PARTS QUITS MODES"; channels = ( "#systemd" ); },
+  { level = "JOINS PARTS QUITS MODES"; channels = ( "#e" ); },
+  { 
+    level = "JOINS PARTS QUITS MODES";
+    channels = ( "#debian-next" );
   }
 );
 logs = { };
