@@ -307,40 +307,5 @@ settings = {
     crapbuster_levels = "JOINS PARTS QUITS CLIENTCRAP CRAP";
   };
 };
-ignores = (
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#friendica" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#bitcoin" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#enyojs" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#pyramid" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#debian" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#buildout" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#json-ld" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#emberjs" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#rdflib" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#emacs" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#btrfs" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#samba" ); },
-  { 
-    level = "JOINS PARTS QUITS MODES";
-    channels = ( "#debian-devel" );
-  },
-  {
-    level = "JOINS PARTS QUITS MODES";
-    channels = ( "#debian-systemd" );
-  },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#debian-nl" ); },
-  {
-    level = "JOINS PARTS QUITS MODES";
-    channels = ( "#debian-mentors" );
-  },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#python" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#zodb" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#zope" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#systemd" ); },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#e" ); },
-  { 
-    level = "JOINS PARTS QUITS MODES";
-    channels = ( "#debian-next" );
-  }
-);
+ignores = ( { level = "JOINS PARTS QUITS"; } );
 logs = { };
