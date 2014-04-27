@@ -23,3 +23,5 @@ bind - resize -2
 bind / removebuf
 bindkey -k F1 prev
 bindkey -k F2 next
+
+bind y eval split 'focus down' 'screen manscreen.sh'
