@@ -98,5 +98,5 @@ rules:
   key: mail
   description: Email address
   numbered: false
-  regex: export MAIL=\S
+  regex: export MAIL=\S+
   substitute: export MAIL=(?#Key)
