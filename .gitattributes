@@ -3,3 +3,4 @@ irssi/.irssi/keepnick	filter=keepnick
 irssi/.irssi/nickserv.auth	filter=nickserv
 irssi/.irssi/config	filter=irssi
 caff/.caffrc	filter=caff
+zsh/.zshenv	filter=zshenv
