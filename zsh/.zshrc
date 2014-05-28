@@ -14,7 +14,3 @@ alias mkdir='nocorrect mkdir'
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
-
-# Customize to your needs...
-export MAIL=olaf@conradi.org
-export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games

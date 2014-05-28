@@ -91,3 +91,12 @@ rules:
   numbered: false
   regex: \$CONFIG\{'keyid'\}(\s*)=(.*qw\{)\w+(\})
   substitute: $CONFIG{'keyid'}\1=\2(?#Key)\3
+--- !Filter
+name: zshenv
+rules:
+- !Secret
+  key: mail
+  description: Email address
+  numbered: false
+  regex: export MAIL=\S
+  substitute: export MAIL=(?#Key)
