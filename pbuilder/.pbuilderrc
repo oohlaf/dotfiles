@@ -1,0 +1,119 @@
+# Setup
+# =====
+# Configure sudo to allow <account> to use setenv to
+# preserve the environment. This enables cowbuilder to find
+# this ~/.pbuilderrc file.
+#
+# Set /etc/sudoers.d/pbuilder to:
+# User_Alias PBUILDERS = <account>
+# Cmnd_Alias PBUILD = /usr/sbin/cowbuilder, /usr/bin/pdebuild
+# Defaults! PBUILD setenv
+# PBUILDERS ALL = SETENV: PBUILD
+#
+# Invoke
+# ======
+# Prepare chroots using Cowbuilder
+# $ sudo -E DIST=<dist> cowbuilder --create
+# $ sudo -E DIST=<dist> cowbuilder --update
+#
+# Building
+# ========
+# Use cowbuilder using a pristine dsc file
+# $ sudo -E DIST=<dist> cowbuilder --build <dsc-file>
+#
+# Or start pdebuild from a source directory
+# $ sudo -E DIST=<dict> pdebuild
+
+: ${PATH_PBUILDER:=/var/cache/pbuilder}
+
+# Debian codenames
+UNSTABLE_CODENAME="sid"
+TESTING_CODENAME="stretch"
+STABLE_CODENAME="jessie"
+
+if [ -z "${DIST}" ] && [ -r "debian/changelog" ]; then
+	DIST=$(dpkg-parsechangelog | awk '/^Distribution: / {print $2}')
+fi
+
+: ${DIST:="$(lsb_release --short --codename)"}
+: ${ARCH:="$(dpkg --print-architecture)"}
+
+case "$DIST" in
+	UNRELEASED)
+		DIST=$UNSTABLE_CODENAME
+		;;
+	experimental)
+		DIST=$UNSTABLE_CODENAME
+		;;
+	unstable)
+		DIST=$UNSTABLE_CODENAME
+		;;
+	testing)
+		DIST=$TESTING_CODENAME
+		;;
+	stable)
+		DIST=$STABLE_CODENAME
+		;;
+esac
+
+if [ -z "${DIST}" ]; then
+	echo "E: Unknown distribution. Please specify DIST environment variable"
+	exit 1
+fi
+DISTRIBUTION="$DIST"
+
+NAME="$DIST"
+if [ -n "${ARCH}" ]; then
+	NAME="$NAME-$ARCH"
+	ARCHITECTURE="$ARCH"
+fi
+
+# Use cowbuilder
+: ${PDEBUILD_PBUILDER:=cowbuilder}
+BASEPATH="$PATH_PBUILDER/base-${DIST}.cow/"
+BUILDPLACE="$PATH_PBUILDER/$NAME/build"
+BUILDRESULT="$PATH_PBUILDER/$NAME/result"
+APTCACHE="$PATH_PBUILDER/$NAME/aptcache"
+
+# Use locally running apt-cache-ng as mirror
+export http_proxy="http://localhost:3142/"
+
+# Workaround until cowbuilder extrapackages works
+# See debian bug #606542
+EXTRAPACKAGES="cowdancer"
+
+# Configure ccache
+if [ -n "${EXTRAPACKAGES}" ]; then
+	EXTRAPACKAGES="ccache ${EXTRAPACKAGES}"
+else
+	EXTRAPACKAGES="ccache"
+fi
+APTGETOPT+=('--force-yes')
+CCACHEDIR="$PATH_PBUILDER/$NAME/ccache"
+
+# Create any missing directories
+for i in "${APTCACHE}" "${CCACHEDIR}"; do
+	[ -n "$i" ] && [ ! -d "$i" ] && mkdir -p "$i"
+done
+
+# Get number of processors from host
+export CONCURRENCY_LEVEL=$(grep -c '^processor' /proc/cpuinfo)
+export DEB_BUILD_OPTIONS="parallel=${CONCURRENCY_LEVEL} $DEB_BUILD_OPTIONS"
+
+# Don't sign build packages
+AUTO_DEBSIGN=no
+
+# Chown results to user who invoked sudo
+if [ -n "${SUDO_USER}" ]; then
+	BUILDRESULTUID=$SUDO_UID
+	BUILDRESULTGID=$SUDO_GID
+fi
+
+# Show cb-shell with bash PID in prompt
+export debian_chroot="cb-shell-$$"
+
+# Print some info
+echo "I: Target name for build is ${NAME}"
+echo "I: Distribution is ${DIST}"
+echo "I: Build architecture is ${ARCH}"
+echo "I: Number of CPUs used for building is ${CONCURRENCY_LEVEL}"
