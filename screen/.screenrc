@@ -1,25 +1,46 @@
-termcapinfo xterm* ti@:te@
 startup_message off
+silencewait 15
 vbell off
-autodetach on
 altscreen on
+autodetach on
 shelltitle "$ |bash"
 defscrollback 10000
 defutf8 on
 nonblock on
-silencewait 15
+
+termcapinfo xterm*|putty* 'ti@:te@:G0
+
+# Use current background color for erased characters
 defbce on
 
+# Allow bold colors
 attrcolor b ".I"
 
 #hardstatus alwayslastline
-#hardstatus string '%{= kw}[ %{= kb}%H%{= kw} ][%= %{= kw}%?%-Lw%?%{= kw}%n*%f %t%?%?%{= kw}%?%+Lw%?%?%= ][ %{r}%l%{w} ]%{w}[%{r} %d/%m/%y %C %A %{w}]%{w}'
-caption always '%{= kw}[ %{= kb}%H%{= kw} ][%= %{= kw}%?%-Lw%?%{= kw}%n*%f %t%?%?%{= kw}%?%+Lw%?%?%= ][ %{r}%l%{w} ]%{w}[%{r} %d/%m/%y %C %A %{w}]%{w}'
+#hardstatus string '%{= kw}[%{= kb}%H%{-}][%L=%=%-Lw%{= kg}%>%n*%f %t%{-}%+Lw%=%-033=][%{= kr}%l%{-}][%{= kr}%d-%m-%y %0c%{-}]'
+caption always '%{= kw}[%{= kb}%H%{-}][%L=%=%-Lw%{= kg}%>%n*%f %t%{-}%+Lw%=%-033=][%{= kr}%l%{-}][%{= kr}%d-%m-%y %0c%{-}]'
+
+# Explanation of hardstatus and caption escape codes
+# %{= kw}       set color to white on black
+# %{= kb}       set color to blue on black
+# %{= kg}       set color to green on black
+# %{-}          restore to previous color
+# %H            hostname
+# %L=           mark position absolute for padding against
+# %=            padding fill
+# %-Lw          previous window list
+# %>            mark here for next truncate command
+# %n*%f %t      window number, *, flags and title
+# %+Lw          next window list
+# %-33=         padding up to 33 chars from the right
+# %l            show system load
+# %d-%m-%y %0c  show date and time (24h)
 
 #bind 'q' quit
 bind = resize =
 bind + resize +2
 bind - resize -2
+bind _ resize max
 bind / removebuf
 bindkey -k F1 prev
 bindkey -k F2 next
