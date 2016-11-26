@@ -8,7 +8,7 @@ defscrollback 10000
 defutf8 on
 nonblock on
 
-termcapinfo xterm*|putty* 'ti@:te@:G0
+termcapinfo xterm*|putty* 'ti@:te@:G0'
 
 # Use current background color for erased characters
 defbce on
