@@ -125,6 +125,11 @@ if has("autocmd")
     autocmd FileType zcml set softtabstop=4
     autocmd FileType zcml set expandtab
 
+    autocmd FileType c,cpp set shiftwidth=4
+    autocmd FileType c,cpp set tabstop=4
+    autocmd FileType c,cpp set noexpandtab
+    autocmd FileType c,cpp set autoindent
+
     " Python PEP8
     autocmd FileType python set textwidth=79
     autocmd FileType python set softtabstop=4
