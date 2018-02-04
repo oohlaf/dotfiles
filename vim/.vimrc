@@ -200,6 +200,13 @@ if has("autocmd")
     autocmd FileType css set expandtab
     autocmd FileType css set smarttab
     autocmd FileType css set autoindent
+
+    " YAML
+    autocmd FileType yaml set softtabstop=2
+    autocmd FileType yaml set shiftwidth=2
+    autocmd FileType yaml set expandtab
+    autocmd FileType yaml set smarttab
+    autocmd FileType yaml set autoindent
 endif
 
 " }}}
