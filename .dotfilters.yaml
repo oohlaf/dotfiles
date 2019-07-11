@@ -1,102 +1,70 @@
-!Filter
-name: gnupg
-rules:
-- !Secret
-  key: defaultkey
-  description: Default GnuPG key
-  numbered: false
-  regex: default-key(\s+)\w+
-  substitute: default-key\1(?#Key)
---- !Filter
-name: keepnick
-rules:
-- !Secret
-  key: freenode-nick
-  description: Nickname on Freenode
-  numbered: false
-  regex: freenode(\s+)\w+
-  substitute: freenode\1(?#Key)
-- !Secret
-  key: oftc-nick
-  description: Nickname on OFTC
-  numbered: false
-  regex: oftc(\s+)\w+
-  substitute: oftc\1(?#Key)
---- !Filter
-name: nickserv
-rules:
-- !Secret
-  key: freenode-nick
-  description: Nickname on Freenode
-  numbered: false
-  regex: Freenode(\s+)\w+
-  substitute: Freenode\1(?#Key)
-- !Secret
-  key: freenode-pass
-  description: Password on Freenode
-  numbered: false
-  regex: Freenode(.*)(\s+)\w+$
-  substitute: Freenode\1\2(?#Key)
-- !Secret
-  key: oftc-nick
-  description: Nickname on OFTC
-  numbered: false
-  regex: OFTC(\s+)\w+
-  substitute: OFTC\1(?#Key)
-- !Secret
-  key: oftc-pass
-  description: Password on OFTC
-  numbered: false
-  regex: OFTC(.*)(\s+)\w+$
-  substitute: OFTC\1\2(?#Key)
---- !Filter
-name: irssi
-rules:
-- !Secret
-  key: realname
-  description: Real name on IRC
-  numbered: false
-  regex: real_name(\s*)=(\s*)(?#QuotedString);
-  substitute: real_name\1=\2"(?#Key)";
-- !Secret
-  key: username
-  description: User name on IRC
-  numbered: false
-  regex: user_name(\s*)=(\s*)(?#QuotedString);
-  substitute: user_name\1=\2"(?#Key)";
-- !Secret
-  key: nick
-  description: Nick name on IRC
-  numbered: false
-  regex: nick(\s*)=(\s*)(?#QuotedString);
-  substitute: nick\1=\2"(?#Key)";
---- !Filter
-name: caff
-rules:
-- !Secret
-  key: owner
-  description: Name of GPG key owner
-  numbered: false
-  regex: \$CONFIG\{'owner'\}(\s*)=(\s*)(?#QuotedString);
-  substitute: $CONFIG{'owner'}\1=\2'(?#Key)';
-- !Secret
-  key: email
-  description: Email address of GPG key owner
-  numbered: false
-  regex: \$CONFIG\{'email'\}(\s*)=(\s*)(?#QuotedString);
-  substitute: $CONFIG{'email'}\1=\2'(?#Key)';
-- !Secret
-  key: keyid
-  description: GPG key id
-  numbered: false
-  regex: \$CONFIG\{'keyid'\}(\s*)=(.*qw\{)\w+(\})
-  substitute: $CONFIG{'keyid'}\1=\2(?#Key)\3
---- !Filter
-name: zshenv
-rules:
-- !Secret
-  key: mail
-  description: Email address
-  numbered: false
-  regex: export MAIL=\S+
-  substitute: export MAIL=(?#Key)
+version: 2
+filters:
+  "gnupg/.gnupg/gpg.conf":
+    rules:
+      defaultkey:
+        description: Default GnuPG key
+        regex: default-key(\s+)\w+
+        substitute: default-key\1(?#Key)
+  "irssi/.irssi/keepnick":
+    rules:
+      freenode-nick:
+        description: Nickname on Freenode
+        regex: freenode(\s+)\w+
+        substitute: freenode\1(?#Key)
+      oftc-nick:
+        description: Nickname on OFTC
+        regex: oftc(\s+)\w+
+        substitute: oftc\1(?#Key)
+  "irssi/.irssi/nickserv.auth":
+    rules:
+      freenode-nick:
+        description: Nickname on Freenode
+        regex: Freenode(\s+)\w+
+        substitute: Freenode\1(?#Key)
+      freenode-pass:
+        description: Pasword on Freenode
+        regex: Freenode(.*)(\s+)\w+$
+        substitute: Freenode\1\2(?#Key)
+      oftc-nick:
+        description: Nickname on OFTC
+        regex: OFTC(\s+)\w+
+        substitute: OFTC\1(?#Key)
+      oftc-pass:
+        description: Password on OFTC
+        regex: OFTC(.*)(\s+)\w+$
+        substitute: OFTC\1\2(?#Key)
+  "irssi/.irssi/config":
+    rules:
+      realname:
+        description: Real name on IRC
+        regex: real_name(\s*)=(\s*)(?#QuotedString);
+        substitute: real_name\1=\2"(?#Key)";
+      username:
+        description: User name on IRC
+        regex: user_name(\s*)=(\s*)(?#QuotedString);
+        substitute: user_name\1=\2"(?#Key)";
+      nick:
+        description: Nick name on IRC
+        regex: nick(\s*)=(\s*)(?#QuotedString);
+        substitute: nick\1=\2"(?#Key)";
+  "caff/.caffrc":
+    rules:
+      owner:
+        description: Name of GPG key owner
+        regex: \$CONFIG\{'owner'\}(\s*)=(\s*)(?#QuotedString);
+        substitute: $CONFIG{'owner'}\1=\2'(?#Key)';
+      email:
+        description: Email address of GPG key owner
+        regex: \$CONFIG\{'email'\}(\s*)=(\s*)(?#QuotedString);
+        substitute: $CONFIG{'email'}\1=\2'(?#Key)';
+      keyid:
+        description: GPG key id
+        regex: \$CONFIG\{'keyid'\}(\s*)=(.*qw\{)\w+(\})
+        substitute: $CONFIG{'keyid'}\1=\2(?#Key)\3
+  "zsh/.zshenv":
+    rules:
+      mail:
+        description: Email address
+        regex: export MAIL=\S+
+        substitute: export MAIL=(?#Key)
