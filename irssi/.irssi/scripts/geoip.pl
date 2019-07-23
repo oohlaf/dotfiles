@@ -18,7 +18,7 @@ use Encode 'decode';
 use vars qw($VERSION %IRSSI);
 $VERSION = "0.0.4";
 %IRSSI = (
-	authors         => "Toni Viemerö, Olaf Conradi",
+	authors         => "Toni ViemerÃ¶, Olaf Conradi",
 	contact         => "toni.viemero\@iki.fi, olaf\@conradi.org",
 	name            => "geoip",
 	description     => "Print the user's city, region and country name" .

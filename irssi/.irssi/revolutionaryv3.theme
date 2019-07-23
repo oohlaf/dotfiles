@@ -35,41 +35,41 @@
 #   ---------------------------------------------------------------------
 #   %k      %K      %0      musta           tummanharmaa     musta
 #   %r      %R      %1      punainen        kirkkaanpunainen punainen
-#   %g      %G      %2      vihre‰          kirkkaanvihre‰   vihre‰
+#   %g      %G      %2      vihre√§          kirkkaanvihre√§   vihre√§
 #   %y      %Y      %3      keltainen       kirkas keltainen keltainen
 #   %b      %B      %4      sininen         kirkas sininen   sininen
 #   %m      %M      %5      pinkki          kirkas pinkki    pinkki
 #   %p      %P              purppura        kirkas purppura
 #   %c      %C      %6      vihreensininen  kirkasvihr.sin.  vihreensininen
 #   %w      %W      %7      harmaa          valkoinen        harmaa
-#   %n      %N              Muuttaa v‰rin oletusv‰riksi poistaen kaiken muun
-#                           v‰rityksen ja m‰‰rityksen. %N on aina terminaalin
-# 			    oletusv‰ri. 
-#   %F                      V‰lkkyminen p‰‰lle/pois p‰‰lt‰.
-#   %U                      Alleviivaus p‰‰lle/pois p‰‰lt‰.
-#   %8                      Invert p‰‰lle/pois p‰‰lt‰.
-#   %9      %_              Bold p‰‰lle/pois p‰‰lt‰.
+#   %n      %N              Muuttaa v√§rin oletusv√§riksi poistaen kaiken muun
+#                           v√§rityksen ja m√§√§rityksen. %N on aina terminaalin
+# 			    oletusv√§ri. 
+#   %F                      V√§lkkyminen p√§√§lle/pois p√§√§lt√§.
+#   %U                      Alleviivaus p√§√§lle/pois p√§√§lt√§.
+#   %8                      Invert p√§√§lle/pois p√§√§lt√§.
+#   %9      %_              Bold p√§√§lle/pois p√§√§lt√§.
 #   %:                      Uusi rivi / rivinvaihto.
 #   %|                      Merkkaa identitation positionin.
-#   %#                      Monospace-fontti p‰‰lle/pois p‰‰lt‰. (hyˆdyllinen listojen ja k‰yttˆliittym‰n kanssa)
-#   %%                      Pelkk‰ prosenttimerkki "%"
+#   %#                      Monospace-fontti p√§√§lle/pois p√§√§lt√§. (hy√∂dyllinen listojen ja k√§ytt√∂liittym√§n kanssa)
+#   %%                      Pelkk√§ prosenttimerkki "%"
 #
 #
 
-# seuraavat merkit korvataan automaattisesti m‰‰ritetyill‰ v‰reill‰
+# seuraavat merkit korvataan automaattisesti m√§√§ritetyill√§ v√§reill√§
 # (tummanharmaa oletuksena)
 replaces = { "[]=" = "$0-%n"; };
 
 abstracts = {
 
-  # teksti joka on ekana ‰ksˆnilinjalla (join/part/quit/etc.), defaulttina kolme kaksoispistett‰,
+  # teksti joka on ekana √§ks√∂nilinjalla (join/part/quit/etc.), defaulttina kolme kaksoispistett√§,
   # jotta muokattu pisg tunnistaa sen (":::")
   line_start = "%r:%y:%g:%n ";
 
-  # timest‰mpit
+  # timest√§mpit
   timestamp = "%K$0-%n";
 
-  # mik‰ tahansa teksti joka kaipaa hilightia, default on boldi (semmoinen valkoinen) eli vaikka *blaa* tai *nauraa*
+  # mik√§ tahansa teksti joka kaipaa hilightia, default on boldi (semmoinen valkoinen) eli vaikka *blaa* tai *nauraa*
   hilight = "%_$0-%_";
 
   # errorviesti, default kirkkaan punainen eli %R
@@ -104,7 +104,7 @@ abstracts = {
   # |_|\_\ \__,_||_| |_| \__,_|  \_/   \__,_|
   #
 
-  # alempana (lis‰formaatit -kohta)
+  # alempana (lis√§formaatit -kohta)
 
   # nick (joinit)
   channick_hilight = "%n$0-%n";
@@ -133,8 +133,8 @@ abstracts = {
   # mormityyli viestin tulostamiseen, $0 = nick mode, $1 = nick
   msgnick = "%_$0%_$1- %|";
 
-  # viesti minulta itselt‰ni. "msgownnick" m‰‰ritt‰‰ nickin tyylimuotoilun
-  # ($0 -kohta msgnickiss‰) ja "ownmsgnick" m‰‰ritt‰‰ koko rivin tyylin.
+  # viesti minulta itselt√§ni. "msgownnick" m√§√§ritt√§√§ nickin tyylimuotoilun
+  # ($0 -kohta msgnickiss√§) ja "ownmsgnick" m√§√§ritt√§√§ koko rivin tyylin.
 
   # $0 = nick mode, $1 = nick
   ownmsgnick = "%K{msgnick %_<%_%K$0%_ %G$1-%K>}%n";
@@ -152,7 +152,7 @@ abstracts = {
   # $0 = highlight color, $1 = nick mode, $2 = nick
   pubmsghinick = "{msgnick %K<%K$1 %P$2-%K>}%P";
 
-  # kanavan nimi viestiss‰
+  # kanavan nimi viestiss√§
   msgchannel = "%n:%c$0-%n";
 
   # privaviesti, $0 = nick, $1 = host
@@ -177,23 +177,23 @@ abstracts = {
   #  \__,_| \___| \__||_| \___/ |_| |_||_| \__|
   #
 
-  # k‰ytetty sis‰isesti t‰ss‰ teemassa
+  # k√§ytetty sis√§isesti t√§ss√§ teemassa
   action_core = "%R >%Y>%G> %C$0-%n";
 
   # yleinen (suurinosa toiminnoista)
   action = "{action_core $0-} ";
 
-  # oma toiminta miss‰ vaan
+  # oma toiminta miss√§ vaan
   ownaction = "{action $0-}";
 
-  # oma toiminto kohteella miss‰ vaan
+  # oma toiminto kohteella miss√§ vaan
   ownaction_target = "{action_core $0}%K:%c$1%n ";
 
-  # jonkun toisen l‰hett‰m‰ priva-actioni
+  # jonkun toisen l√§hett√§m√§ priva-actioni
   pvtaction = " (%R>%Y>%G>%n) %C$0-%n ";
   pvtaction_query = "{action $0-}";
 
-  # julkinen jonkun toisen l‰hett‰m‰ actioni
+  # julkinen jonkun toisen l√§hett√§m√§ actioni
   pubaction = "{action $0-}";
 
   #
@@ -234,13 +234,13 @@ abstracts = {
   dcc = "<%g$0-%n>";
   dccfile = "%_$0-%_";
 
-  # DCC x‰tit, omat DCC-toiminnat
+  # DCC x√§tit, omat DCC-toiminnat
   dccownmsg = "[%r$0%K($1-%K)%n] ";
   dccownnick = "<%R$0-%n>";
   dccownaction = "{action $0-}";
   dccownaction_target = "{action_core $0}%K:%c$1%n ";
 
-  # DCC x‰tit - muut
+  # DCC x√§tit - muut
   dccmsg = "[%G$1-%K(%g$0%K)%n] ";
   dccquerynick = "<%C$0-%n>";
   dccaction = " %R>%Y>%G>%n %C$0-%n %|";
@@ -256,29 +256,29 @@ abstracts = {
   #                                   |_|
   # 
 
-  # oletustaustav‰ri kaikille statuspalkeille. 
-  # statusbarin teksteille ja kohteille voit antaa myˆs omat v‰rit.
+  # oletustaustav√§ri kaikille statuspalkeille. 
+  # statusbarin teksteille ja kohteille voit antaa my√∂s omat v√§rit.
   sb_background = "%3%K";
 
-  # aktiivisen ikkunan v‰ri (alapalkki/splitscreen)
+  # aktiivisen ikkunan v√§ri (alapalkki/splitscreen)
   sb_window_bg = "%2%K";
 
-  # oletustausta oletusstatusbar-ryhm‰lle
+  # oletustausta oletusstatusbar-ryhm√§lle
   #sb_default_bg = "%4";
 
-  # kirjoittamispalkin taustav‰ri
+  # kirjoittamispalkin taustav√§ri
   sb_prompt_bg = "%n";
 
-  # statusbarin infon taustav‰ri
+  # statusbarin infon taustav√§ri
   sb_info_bg = "%6";
 
-  # topicbarin v‰rit (yl‰palkki)
+  # topicbarin v√§rit (yl√§palkki)
   sb_topic_bg = "%5%W";
 
-  # teksti statusbarin alussa. sb-item laittaa v‰lin jo valmiiksi joten mit‰‰n ei ole oletuksena
+  # teksti statusbarin alussa. sb-item laittaa v√§lin jo valmiiksi joten mit√§√§n ei ole oletuksena
   sbstart = "";
 
-  # teksti statusbarin lopussa. siin‰ on taas v‰li oletuksena joten mit‰‰n ei t‰ss‰k‰‰n k‰ytet‰.
+  # teksti statusbarin lopussa. siin√§ on taas v√§li oletuksena joten mit√§√§n ei t√§ss√§k√§√§n k√§ytet√§.
   sbend = "";
 
   prompt = "{channel $*}%n%9>%_ ";
@@ -305,12 +305,12 @@ abstracts = {
   # hilight!
   sb_act_hilight = "%m>>$*";
 
-  # hilight m‰‰ritetyll‰ v‰rill‰, $0 = v‰ri, $1 = teksti
+  # hilight m√§√§ritetyll√§ v√§rill√§, $0 = v√§ri, $1 = teksti
   sb_act_hilight_color = "$0$1-%n";
 
 };
 
-# lis‰formaatit
+# lis√§formaatit
 
 formats = {
   "fe-common/core" = {
