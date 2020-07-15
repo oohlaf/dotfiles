@@ -45,4 +45,4 @@ bind / removebuf
 bindkey -k F1 prev
 bindkey -k F2 next
 
-bind y eval split 'focus down' 'screen manscreen.sh'
+bind y eval split 'focus down' 'screen manscreen.sh -c'
