@@ -22,3 +22,9 @@ alias mkdir='nocorrect mkdir'
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# Enable navigation using Home and End key
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
