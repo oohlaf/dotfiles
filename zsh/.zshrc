@@ -18,6 +18,11 @@ alias dvtm='dtach -A /tmp/dvtm-session-$USER -r winch dvtm'
 alias sudo='nocorrect sudo'
 alias mkdir='nocorrect mkdir'
 
+# On systems that don't have w installed, alias it to who command
+if (( ! $+commands[w] )); then
+  alias w='who -b -l -p -r -T -u'
+fi
+
 # History substring search keybindings
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
