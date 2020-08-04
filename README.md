@@ -10,7 +10,8 @@ wrote which allows you to strip information based on regular expressions and
 replace it with a special tag. This is done transparantly using Git filters.
 
 When the repository is cloned, a choice can be made to symlink all the
-dotfiles into `$HOME` or by topic (toplevel directory).
+dotfiles into `$HOME` or by topic (toplevel directory). This is done in a
+similar fashion to the stow utility.
 
 
 Installation on a new machine
