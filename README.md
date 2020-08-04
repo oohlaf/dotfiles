@@ -27,7 +27,7 @@ $ git clone --recurse-submodules git@github.com:oohlaf/dotfiles.git
 restricted:
 
 ```
-$ chmod 0600 ~\.config/dotsecrets/dotsecrets.yaml
+$ chmod 0600 ~/.config/dotsecrets/dotsecrets.yaml
 ```
 
 3. Initialize the dotfiles working directory:
