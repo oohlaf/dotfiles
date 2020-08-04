@@ -23,7 +23,7 @@ $ git clone --recurse-submodules git@github.com:oohlaf/dotfiles.git
 ```
 
 2. Transfer my secrets file from another machine and copy it to
-`~\.config/dotsecrets/dotsecrets.yaml` and make sure the file permissions are
+`~/.config/dotsecrets/dotsecrets.yaml` and make sure the file permissions are
 restricted:
 
 ```
